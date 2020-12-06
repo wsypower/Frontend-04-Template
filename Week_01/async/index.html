@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红绿灯问题</title>
+</head>
+<style>
+    .red,
+    .green,
+    .yellow {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(155, 151, 151);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .red.hight {
+        background-color: red;
+    }
+
+    .green.hight {
+        background-color: green
+    }
+
+    .yellow.hight {
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
+</body>
+<script>
+    const hight = (light) => {
+        const lightDiv = document.getElementsByTagName("div");
+        Array.from(lightDiv).forEach((item) => item.classList.remove("hight"));
+        document.getElementsByClassName(light)[0].classList.add("hight");
+    };
+
+    const sleep = (t) => new Promise((resolve) => setTimeout(resolve, t));
+
+    const go = async () => {
+        while (true) {
+            hight("green");
+            await sleep(1000);
+            hight("yellow");
+            await sleep(200);
+            hight("red");
+            await sleep(500);
+        }
+    };
+    go();
+
+</script>
+
+</html>
