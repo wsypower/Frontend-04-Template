@@ -1,5 +1,5 @@
-let pattern = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let color = 1;
+let pattern = [0, 0, 0, 0, 1, 0, 0, 0, 0];
+let color = 2;
 
 const show = () => {
   let board = document.getElementById("board");
@@ -22,6 +22,7 @@ function userMove(x, y) {
   pattern[y * 3 + x] = color;
   if (check(pattern, color)) {
     alert(color == 1 ? "⭕️ is winner!!" : color === 2 ? "❌ is winner!!" : "");
+    return;
   }
   color = 3 - color;
   show();
@@ -35,6 +36,7 @@ function computerMove() {
   }
   if (check(pattern, color)) {
     alert(color == 1 ? "⭕️ is winner!!" : color === 2 ? "❌ is winner!!" : "");
+    return;
   }
   color = 3 - color;
   show();
